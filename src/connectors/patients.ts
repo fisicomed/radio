@@ -53,7 +53,7 @@ export const patientsConnector = {
     const { data, error } = await supabase
       .from('patients')
       // @ts-ignore - Workaround for Supabase type inference issue
-      .insert([patient])
+      .insert([patient] as any)
       .select()
       .single();
     
