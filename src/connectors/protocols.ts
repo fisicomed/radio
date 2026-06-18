@@ -84,7 +84,7 @@ export const protocolsConnector = {
     
     if (error || !currentData) throw error || new Error('Protocol not found');
 
-    const newCount = (currentData.usage_count || 0) + 1;
+    const newCount = currentData ? (currentData.usage_count || 0) + 1 : 1;
 
     const { data, error: updateError } = await supabase
       .from('protocols')
