@@ -18,8 +18,7 @@ export default function Signup() {
     setError(null);
 
     try {
-      const { error } = await signUp(email, password, fullName);
-      if (error) throw error;
+      await signUp(email, password, fullName);
       setSuccess(true);
       setTimeout(() => navigate('/login'), 2000);
     } catch (err: any) {

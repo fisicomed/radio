@@ -16,8 +16,7 @@ export default function Login() {
     setError(null);
 
     try {
-      const { error } = await signIn(email, password);
-      if (error) throw error;
+      await signIn(email, password);
       navigate('/dashboard');
     } catch (err: any) {
       setError(err.message || 'Erro ao fazer login');

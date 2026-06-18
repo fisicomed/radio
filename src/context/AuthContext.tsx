@@ -8,6 +8,7 @@ interface AuthContextType {
   profile: UserProfile | null;
   session: Session | null;
   loading: boolean;
+  supabase: any; // Adicionado para acesso direto ao cliente Supabase
   signIn: (email: string, password: string) => Promise<void>;
   signUp: (email: string, password: string, fullName?: string) => Promise<void>;
   signOut: () => Promise<void>;
@@ -86,6 +87,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     profile,
     session,
     loading,
+    supabase: authConnector.supabase, // Adicionado acesso direto ao cliente
     signIn,
     signUp,
     signOut,
