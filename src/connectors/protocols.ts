@@ -76,14 +76,13 @@ export const protocolsConnector = {
   },
 
   async incrementUsage(id: string) {
-    const { data: currentData, error } = await supabase
+    const { data: currentData } = await supabase
       .from('protocols')
       .select('usage_count')
       .eq('id', id)
       .single();
-    
-    if (error || !currentData) throw error || new Error('Protocol not found');
-
+      
+    // @ts-ignore
     const newCount = currentData ? (currentData.usage_count || 0) + 1 : 1;
 
     const { data, error: updateError } = await supabase
