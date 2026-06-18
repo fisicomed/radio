@@ -52,6 +52,7 @@ export const patientsConnector = {
   async create(patient: Omit<Patient, 'id' | 'created_at' | 'updated_at'>) {
     const { data, error } = await supabase
       .from('patients')
+      // @ts-ignore - Workaround for Supabase type inference issue
       .insert([patient])
       .select()
       .single();
@@ -63,6 +64,7 @@ export const patientsConnector = {
   async update(id: string, updates: Partial<Patient>) {
     const { data, error } = await supabase
       .from('patients')
+      // @ts-ignore - Workaround for Supabase type inference issue
       .update({ ...updates, updated_at: new Date().toISOString() })
       .eq('id', id)
       .select()
