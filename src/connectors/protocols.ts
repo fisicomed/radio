@@ -83,7 +83,7 @@ export const protocolsConnector = {
       .eq('id', id)
       .single();
       
-    const newcount: (currentData?.usage_count || 0) + 1)
+    const newcount: (currentData?.usage_count || 0) + 1;
     
     const { data, error } = await supabase
       .from('protocols')
