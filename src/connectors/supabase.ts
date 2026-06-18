@@ -14,3 +14,4 @@ export const supabase = createClient<Database>(
 );
 
 export default supabase;
+/* FORCE UPDATE: Thu Jun 18 22:31:55 UTC 2026 */
