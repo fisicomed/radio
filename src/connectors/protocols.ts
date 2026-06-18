@@ -76,24 +76,25 @@ export const protocolsConnector = {
   },
 
   async incrementUsage(id: string) {
-    // Simplified fallback without complex chaining that causes type errors
-    const { data: currentData } = await supabase
+    const { data: currentData, error } = await supabase
       .from('protocols')
       .select('usage_count')
       .eq('id', id)
       .single();
-      
-    const newCount = (currentData?.usage_count || 0) + 1;
     
-    const { data, error } = await supabase
+    if (error || !currentData) throw error || new Error('Protocol not found');
+
+    const newCount = (currentData.usage_count || 0) + 1;
+
+    const { data, error: updateError } = await supabase
       .from('protocols')
-      // @ts-ignore - Workaround for Supabase type inference issue
+      // @ts-ignore
       .update({ usage_count: newCount, updated_at: new Date().toISOString() })
       .eq('id', id)
       .select()
       .single();
     
-    if (error) throw error;
+    if (updateError) throw updateError;
     return data as Protocol;
   },
 
