@@ -82,7 +82,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     await authConnector.resetPassword(email);
   };
 
-  const value = {
+  const value: any = {
     user,
     profile,
     session,
