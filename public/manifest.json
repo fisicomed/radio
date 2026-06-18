@@ -1,0 +1,18 @@
+{
+  "name": "Radio Manager - Sistema de Gestão de Radioterapia",
+  "short_name": "Radio Manager",
+  "description": "Sistema multitenant para gestão de protocolos e planos de tratamento em radioterapia",
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#2563eb",
+  "background_color": "#ffffff",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/vite.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
