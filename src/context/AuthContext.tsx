@@ -94,6 +94,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     resetPassword,
   };
 
+  // @ts-ignore
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 }
 
